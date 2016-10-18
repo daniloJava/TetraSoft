@@ -44,7 +44,7 @@ public class NovoCadastro extends HttpServlet {
 			DaoCadastro dao = new DaoCadastro();
 			dao.save(contato);
 			RequestDispatcher rd = request
-			        .getRequestDispatcher("/contato-adicionado.jsp");
+			        .getRequestDispatcher("/views/cadastro.jsp");
 			rd.forward(request,response);
 			
 		} catch (ServletException e) {

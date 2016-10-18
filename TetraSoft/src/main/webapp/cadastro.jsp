@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="adicionaContato" method="POST">
+	<form action="novoContato" method="POST">
 		<div class="form-group">
 			<label for="inputName">Nome:</label> <input type="text" name="nome"
 				class="form-control" id="inputName" placeholder="Digite seu Nome"
