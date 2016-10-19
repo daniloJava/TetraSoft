@@ -1,4 +1,4 @@
-package br.com.tetrasoft.controller;
+package br.com.tetrasoft.logica;
 
 import java.sql.Connection;
 import java.util.List;
@@ -17,7 +17,7 @@ public class ListarContatos implements Logica {
 	 * @return String -  a pagina de lista contatos que vai aprentar os dados.
 	 */
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// recupera a coneção com o banco atravez do atributo do doFilter
+		// recupera a coneï¿½ï¿½o com o banco atravez do atributo do doFilter
 		// connection.
 		Connection connection = (Connection) req.getAttribute("connection");
 
@@ -28,6 +28,6 @@ public class ListarContatos implements Logica {
 		//Repassa a lista por atributo
 		req.setAttribute("contatos", contatos);
 
-		return "lista-contatos.jsp";
+		return "listar.jsp";
 	}
 }

@@ -34,7 +34,7 @@ public class Cadastro implements Serializable{
 	private String endereco;
 
 	@Column(name = "TELEFONE_CADASTRO")
-	private String Telefone;
+	private String telefone;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "SEXO_CADASTRO", nullable = false)
@@ -73,11 +73,11 @@ public class Cadastro implements Serializable{
 	}
 
 	public String getTelefone() {
-		return Telefone;
+		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
-		Telefone = telefone;
+		this.telefone = telefone;
 	}
 
 	public Sexo getSexo() {

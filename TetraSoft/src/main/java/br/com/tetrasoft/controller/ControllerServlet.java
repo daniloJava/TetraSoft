@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.tetrasoft.logica.Logica;
+
 
 /**
- * Fora de aclopamento a Função é criar uma classe generica, que possa receber
+ * Fora de aclopamento a Funï¿½ï¿½o ï¿½ criar uma classe generica, que possa receber
  * qualquer tipo de classe e instanciar qualquer tipo de classe. atravez na
- * anotação @WebServlet as paginas podem acessar qualquer tipo de logica.
+ * anotaï¿½ï¿½o @WebServlet as paginas podem acessar qualquer tipo de logica.
  * 
  * @author Danilo Silva
  *
@@ -25,7 +27,7 @@ public class ControllerServlet extends HttpServlet {
 		// Recupera o paremetro passado pelas paginas com o nome de logica e
 		// cria o pacote para criar o Objeto
 		String parametro = request.getParameter("logica");
-		String nomeDaClasse = "br.com.caelum.mvc.logica." + parametro;
+		String nomeDaClasse = "br.com.tetrasoft.logica." + parametro;
 
 		try {
 			// cria a classe conforme os dados recebidos
@@ -37,7 +39,7 @@ public class ControllerServlet extends HttpServlet {
 			request.getRequestDispatcher(pagina).forward(request, response);
 
 		} catch (Exception e) {
-			throw new ServletException("A lógica de negócios causou uma exceção", e);
+			throw new ServletException("Problemas na logica de Negocio.", e);
 		}
 	}
 }

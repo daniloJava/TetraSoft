@@ -1,4 +1,4 @@
-package br.com.tetrasoft.controller;
+package br.com.tetrasoft.logica;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

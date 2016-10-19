@@ -1,8 +1,9 @@
-package br.com.tetrasoft.controller;
+package br.com.tetrasoft.logica;
 
 import java.io.IOException;
 import java.rmi.ServerException;
 import java.sql.Connection;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,22 +22,16 @@ public class NovoCadastro extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServerException {
 
-		// buscando os parâmetros no request
-		String nome = request.getParameter("nome");
-		String endereco = request.getParameter("endereco");
-		String email = request.getParameter("email");
-		
-
-		// fazendo a conversão da data.
-
+		// fazendo a conversï¿½o da data.
 
 		// monta um objeto contato
 		Cadastro contato = new Cadastro();
-		contato.setNome(nome);
-		contato.setEndereco(endereco);
-		contato.setEmail(email);
-		contato.setSexo(Sexo.MASCULINO);
-
+		contato.setNome(request.getParameter("nome"));
+		contato.setEndereco(request.getParameter("endereco"));
+		contato.setEmail(request.getParameter("email"));
+		contato.setTelefone(request.getParameter("telefone"));
+		contato.setSexo(request.getParameter("sexo").equals("MASCULINO")? Sexo.MASCULINO : Sexo.FEMININO);
+		
 		// salva o contato
 		try {
 			Connection connection = (Connection) request.getAttribute("connection");
@@ -44,7 +39,7 @@ public class NovoCadastro extends HttpServlet {
 			DaoCadastro dao = new DaoCadastro();
 			dao.save(contato);
 			RequestDispatcher rd = request
-			        .getRequestDispatcher("/views/cadastro.jsp");
+			        .getRequestDispatcher("cadastro.jsp");
 			rd.forward(request,response);
 			
 		} catch (ServletException e) {
