@@ -1,4 +1,63 @@
-body{
-	
+.conteudo {
+ 	width: 1020px;
+ 	height: 900px;
+ 	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+  	
+}
+
+#header{
+	height: 8%;
+}
+#header h2{
+	font-family: sans-serif;
+	font-size: 25px;
+}
+
+#id_logo{
+	width: 200px;
+}
+
+#pagina h4{
+	margin-bottom: 3%;
+	margin-left: 1%;
+}
+
+#pagina {
+	border-left: 2px solid black;
+	padding-left: 2%;
 	
 }
+
+.form-horizontal{
+	padding-left: 7%;
+}
+.form-group label{
+	text-align: right;
+}
+
+.btn-primary{
+	width: 150px;
+	
+}
+
+.table-striped th{
+	background-color: rgb(121, 173, 221);
+	color: white;
+}
+hr{
+	border: 1px solid black;
+}
+
+.table td{
+	border: 1px solid rgb(121, 173, 221);
+}
+.table-striped{
+	background-color: rgb(221, 235, 247);
+}
+
+
+
+
+ 
