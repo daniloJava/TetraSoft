@@ -10,7 +10,13 @@ import javax.persistence.Query;
 
 import br.com.tetrasoft.util.JPAUtil;
 
-
+/**Classe Dao para as funções gemericas que todas as Classes Modelos 
+ * normalmente precisam
+ * 
+ * @author Danilo Silva
+ *
+ * @param <T>
+ */
 public abstract class DaoGenerico <T extends Serializable>{
 
 private Class<T> aClass;
@@ -23,11 +29,11 @@ private Class<T> aClass;
 		this.aClass = aClass;
 	}
 	
-	/**Sï¿½ sendo permitido acesso a esse metodo as classes
+	/**Inicializa uma conexao sendo permitido acesso a esse metodo as classes
 	 * que estenderem esse metodo.
 	 * 
 	 * 
-	 * @return EntityManager- instancia do JPAUtil Testando com o .getInstance() se jï¿½ existe, e um EntityManager. 
+	 * @return EntityManager- instancia do JPAUtil Testando com o .getInstance() se ja existe, e um EntityManager. 
 	 */
 	protected EntityManager getEntityManager(){
 		return JPAUtil.getInstance().getEntityManager();
@@ -48,7 +54,8 @@ private Class<T> aClass;
 		return count;
 	}
 	
-	/**Procura somente 1 resultado
+	/**Procura somente 1 resultado atravez de uma 
+	 * query informada e o parametros
 	 * 
 	 * @param Jpql
 	 * @param params
@@ -97,6 +104,8 @@ private Class<T> aClass;
 		
 		return entities;
 	}
+	
+	
 	/** Retorna todos os dados do banco.
 	 * 
 	 * @return List<T> - de dados do banco
@@ -122,7 +131,7 @@ private Class<T> aClass;
 	}
 	
 	
-	/**Consulta por Id para retornar um ï¿½nico objeto
+	/**Consulta por Id para retornar um unico objeto
 	 * 
 	 * @return - a classe completa 
 	 */
@@ -139,7 +148,7 @@ private Class<T> aClass;
 	
 	/**Metodo para salvar a entidade.
 	 * 
-	 * @param entity - serï¿½ recebido apartir do generico da classe.
+	 * @param entity - sera recebido apartir do generico da classe.
 	 */
 	public void save(T entity){
 		
@@ -154,7 +163,7 @@ private Class<T> aClass;
 	
 	/**Metodo para atualizar a classe
 	 * 
-	 * @param entity - serï¿½ recebido apartir do generico da classe.
+	 * @param entity - sera½ recebido apartir do generico da classe.
 	 */
 	public void update(T entity){
 		//recebe uma conexï¿½o 
@@ -166,7 +175,7 @@ private Class<T> aClass;
 	}
 	
 	
-	/**Metodo para deletar 	o objeto do banco
+	/**Metodo para deletar 	o objeto do banco pelo ID
 	 * 
 	 * @param id - receberar o ID paara a conculta antes da deleï¿½ï¿½o
 	 */

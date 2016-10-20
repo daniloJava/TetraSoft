@@ -16,15 +16,26 @@ import br.com.tetrasoft.dao.DaoCadastro;
 import br.com.tetrasoft.entity.Cadastro;
 import br.com.tetrasoft.entity.Cadastro.Sexo;
 
+/**De uma forma diferente,
+ * essa classe e a proria Servlet
+ * 
+ * Atravez da Anotação @WebServlet eu chamo o seu conteudo na pagina,
+ * e automaticamente o metodo service é executado 
+ * 
+ * 
+ * @author Danilo Silva
+ *
+ */
 @WebServlet("/novoContato")
 public class NovoCadastro extends HttpServlet {
-
+	
+	/**Metodo Sobrecarregado da Classe HttpServlet
+	 * 
+	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServerException {
 
-		// fazendo a conversï¿½o da data.
-
-		// monta um objeto contato
+		// monta um objeto contato Recuperando os Valores pelo Request
 		Cadastro contato = new Cadastro();
 		contato.setNome(request.getParameter("nome"));
 		contato.setEndereco(request.getParameter("endereco"));
@@ -37,6 +48,8 @@ public class NovoCadastro extends HttpServlet {
 			
 			DaoCadastro dao = new DaoCadastro();
 			dao.save(contato);
+			
+			//Redireciona para a pagina
 			RequestDispatcher rd = request
 			        .getRequestDispatcher("cadastro.jsp");
 			rd.forward(request,response);

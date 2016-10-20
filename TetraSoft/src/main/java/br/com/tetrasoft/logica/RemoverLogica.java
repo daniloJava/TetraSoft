@@ -12,24 +12,21 @@ import br.com.tetrasoft.entity.Cadastro;
 
 public class RemoverLogica implements Logica{
 	
-	/**
+	/**Metodo para remover o Registro atravez do ID
+	 * 
 	 * @param request HttpServletRequest - Recuper o request 
 	 * @param response HttpServletResponse- Deve uma resposta
-	 * @return String -  a pagina de lista contatos que vai aprentar os dados.
+	 * @return String -  chama a pagina de lista contatos que vai aprentar os dados.
 	 */
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//Recupera o ID para remoção no BD
 		Long id = Long.parseLong(req.getParameter("id"));
-		
-		// recupera a coneção com o banco atravez do atributo do doFilter connection.
-		Connection connection = (Connection) req
-                .getAttribute("connection");
         
         // passe a conexão no construtor
         DaoCadastro dao = new DaoCadastro(); 
-        
 		System.out.println("Excluindo conato..");
+
 		dao.delete(id);;
 		
 		return "tetra?logica=ListarContatos";

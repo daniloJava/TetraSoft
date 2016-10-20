@@ -14,6 +14,12 @@ import br.com.tetrasoft.dao.DaoCadastro;
 import br.com.tetrasoft.entity.Cadastro;
 import br.com.tetrasoft.entity.Cadastro.Sexo;
 
+/**Classe Logica para fazer o Update da pagina com os valores recebidos da Classe mostraUpdate
+ * utilizando da mesma forma com essa classe do tipo Servlet
+ * 
+ * @author Aluno
+ *
+ */
 @WebServlet("/updateContato")
 public class UpdateContato extends HttpServlet{
 
@@ -30,7 +36,6 @@ public class UpdateContato extends HttpServlet{
 				contato.setSexo(request.getParameter("sexo").equals("MASCULINO")? Sexo.MASCULINO : Sexo.FEMININO);
 				
 		
-		// passe a conexão no construtor
 		try {
 		DaoCadastro dao = new DaoCadastro();
 		dao.update(contato);

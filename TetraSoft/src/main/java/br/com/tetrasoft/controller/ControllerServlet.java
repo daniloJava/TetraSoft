@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.tetrasoft.logica.Logica;
 
 
-/**
- * Fora de aclopamento a Fun��o � criar uma classe generica, que possa receber
- * qualquer tipo de classe e instanciar qualquer tipo de classe. atravez na
- * anota��o @WebServlet as paginas podem acessar qualquer tipo de logica.
+/**Classe de Controller de Servlet Generico, capaz de receber e instanciar qualquer tipo de classe e
+ * de forma pela URL.
  * 
  * @author Danilo Silva
  *
@@ -36,6 +34,7 @@ public class ControllerServlet extends HttpServlet {
 			Logica logica = (Logica) classe.newInstance();
 			String pagina = logica.executa(request, response);
 			
+			//Redireciona para a pagina
 			request.getRequestDispatcher(pagina).forward(request, response);
 
 		} catch (Exception e) {
@@ -43,11 +42,4 @@ public class ControllerServlet extends HttpServlet {
 		}
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
-		
-		
-	}
 }

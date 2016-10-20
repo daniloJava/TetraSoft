@@ -11,6 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**Classe modelo para o CAdastro
+ * 
+ * @author Danilo Silva
+ *
+ */
 @Entity
 @Table(name = "CADASTRO")
 public class Cadastro implements Serializable{
