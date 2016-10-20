@@ -7,18 +7,75 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <script>
 $(document).ready(function(){
-    $(".aplicaModal").click(function(){
-    	
-    	
-        $("#myModal").modal();
+	$(document).on('click', 'a[id*="editar"]', function (a){
+		var idContato = $(this).val();
+        atualizar(idContato);
+        alert(idContato);
+		$("#myModal").modal();
     });
 });
+
+function atualizar(idContato) {
+	var url = "tetra?logica=UpdateContato&id=" + idContato;
+	
+	$("#myModal").load(url, function(response, status, xhr) {
+		if (status == "error") {
+			var msg = "Sorry but there was an error: ";
+			$("#info").html(msg + xhr.status + " " + xhr.statusText);
+		}
+});
+}
 </script>	
 
-<div class="modal fade" id="myModal" role="dialog">
+
+<thead>
+	<tr>
+		<th>Nome</th>
+		<th>Email</th>
+		<th>Telefone</th>
+		<th>Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<c:forEach items="${contatos}" var="contato">
+		<tr>
+			<td><strong>${contato.nome}</strong></td>
+			<td>${contato.email}</td>
+			<td>${contato.telefone}</td>
+			<td>
+			<a href="#"  id="editar" value="${contato.idCadastro}">
+  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> editar
+			</a> 
+			| <a
+				href="tetra?logica=RemoverLogica&id=${contato.idCadastro}">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Remover</a>
+			</td>
+			<!--  -->
+		</tr>
+	</c:forEach>
+</tbody>
+<tfoot>
+	<tr>
+		<th colspan="4"><c:forEach var="p" begin="1"
+				end="${page.totalPages}">
+				<c:choose>
+					<c:when test="${ (p - 1) eq page.number }">
+						<button id="button_${p}" disabled="disabled" value="${p}">${p}</button>
+					</c:when>
+					<c:otherwise>
+						<button id="button_${p}" value="${p}">${p}</button>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach></th>
+	</tr>
+
+</tfoot>
+	
+	<div id="modalUpdate">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
@@ -38,7 +95,7 @@ $(document).ready(function(){
 							<label for="inputName" class="col-sm-2 control-label">Nome:</label>
 							<div class="col-sm-10">
 								<input type="text" name="nome" class="form-control"
-									id="inputName" value="${oldContato.nome }" required>
+									id="inputName" placeholder="Digite seu Nome" required>
 							</div>
 						</div>
 
@@ -47,7 +104,7 @@ $(document).ready(function(){
 							<label for="exampleInputEmail1" class="col-sm-2 control-label">E-mail:</label>
 							<div class="col-sm-10">
 								<input type="email" class="form-control" id="exampleInputEmail1"
-									name="email" value="${oldContato.email }" required>
+									name="email" placeholder="Email" required>
 							</div>
 						</div>
 
@@ -56,7 +113,7 @@ $(document).ready(function(){
 							<label for="Endereco" class="col-sm-2 control-label">Endereço:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="Endereco"
-									name="endereco" value="${oldContato.endereco }" required>
+									name="endereco" placeholder="Digite seu Endereco" required>
 							</div>
 						</div>
 
@@ -65,7 +122,7 @@ $(document).ready(function(){
 							<label for="Telefone" class="col-sm-2 control-label">Telefone:</label>
 							<div class="col-sm-10">
 								<input type="text" class="form-control" id="Telefone"
-									name="telefone" value="${oldContato.telefone }" required>
+									name="telefone" placeholder="Telefone" required>
 							</div>
 						</div>
 
@@ -102,6 +159,8 @@ $(document).ready(function(){
 		</div>
 	</div>
 
+</div>
 
-</body>
-</html>
+
+
+

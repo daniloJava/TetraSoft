@@ -23,11 +23,11 @@ private Class<T> aClass;
 		this.aClass = aClass;
 	}
 	
-	/**Só sendo permitido acesso a esse metodo as classes
+	/**Sï¿½ sendo permitido acesso a esse metodo as classes
 	 * que estenderem esse metodo.
 	 * 
 	 * 
-	 * @return EntityManager- instancia do JPAUtil Testando com o .getInstance() se já existe, e um EntityManager. 
+	 * @return EntityManager- instancia do JPAUtil Testando com o .getInstance() se jï¿½ existe, e um EntityManager. 
 	 */
 	protected EntityManager getEntityManager(){
 		return JPAUtil.getInstance().getEntityManager();
@@ -39,7 +39,7 @@ private Class<T> aClass;
 	 */
 	public long count() {
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin(); // iniciando a transação
+		manager.getTransaction().begin(); // iniciando a transaï¿½ï¿½o
 
 		Query query = manager.createQuery("select count(c) from " + aClass.getSimpleName() + "c");
 
@@ -56,7 +56,7 @@ private Class<T> aClass;
 	 */
 	public T findOne(String Jpql, Object... params) {
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin(); // iniciando a transação
+		manager.getTransaction().begin(); // iniciando a transaï¿½ï¿½o
 
 		Query query = manager.createQuery(Jpql);
 
@@ -79,9 +79,9 @@ private Class<T> aClass;
 	 * @param params - Lista de parametros para consulta
 	 * @return List<T> - Lista dos resultados.
 	 */
-	public List<T> find(String Jpql, Object... params){
+	public List<T> find(String Jpql, String... params){
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();   //iniciando a transação
+		manager.getTransaction().begin();   //iniciando a transaï¿½ï¿½o
 		
 		
 		Query query = manager.createQuery(Jpql);
@@ -104,9 +104,9 @@ private Class<T> aClass;
 	@SuppressWarnings("unchecked")
 	public List<T> findAll(){
 		
-		//recebe uma conexão 
+		//recebe uma conexï¿½o 
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();   //iniciando a transação
+		manager.getTransaction().begin();   //iniciando a transaï¿½ï¿½o
 		
 		//informando uma query de JPQL trabalhando com classes e suas propriedades
 		//.getSimpleName() quecupera o Nome da classe
@@ -114,7 +114,7 @@ private Class<T> aClass;
 		//recupera dentro da lista
 		List<T> entities = query.getResultList();
 		
-		manager.getTransaction().commit(); // fixar a transação.
+		manager.getTransaction().commit(); // fixar a transaï¿½ï¿½o.
 		manager.close(); //liberar o objeto da memoria
 		
 		return entities;
@@ -122,16 +122,16 @@ private Class<T> aClass;
 	}
 	
 	
-	/**Consulta por Id para retornar um único objeto
+	/**Consulta por Id para retornar um ï¿½nico objeto
 	 * 
 	 * @return - a classe completa 
 	 */
 	public T findById(Long id){
-		//recebe uma conexão 
+		//recebe uma conexï¿½o 
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();   //iniciando a transação
+		manager.getTransaction().begin();   //iniciando a transaï¿½ï¿½o
 		T entity  = (T) manager.find(aClass, id);	//recuperando Objeto completo
-		manager.getTransaction().commit(); // fixar a transação.
+		manager.getTransaction().commit(); // fixar a transaï¿½ï¿½o.
 		manager.close(); //liberar o objeto da memoria
 		
 		return entity;
@@ -139,48 +139,48 @@ private Class<T> aClass;
 	
 	/**Metodo para salvar a entidade.
 	 * 
-	 * @param entity - será recebido apartir do generico da classe.
+	 * @param entity - serï¿½ recebido apartir do generico da classe.
 	 */
 	public void save(T entity){
 		
-		//recebe uma conexão 
+		//recebe uma conexï¿½o 
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();   //iniciando a transação
+		manager.getTransaction().begin();   //iniciando a transaï¿½ï¿½o
 		manager.persist(entity);  //persistindo o Objeto.
-		manager.getTransaction().commit(); // fixar a transação.
+		manager.getTransaction().commit(); // fixar a transaï¿½ï¿½o.
 		manager.close(); //liberar o objeto da memoria
 		
 	}
 	
 	/**Metodo para atualizar a classe
 	 * 
-	 * @param entity - será recebido apartir do generico da classe.
+	 * @param entity - serï¿½ recebido apartir do generico da classe.
 	 */
 	public void update(T entity){
-		//recebe uma conexão 
+		//recebe uma conexï¿½o 
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();   //iniciando a transação
+		manager.getTransaction().begin();   //iniciando a transaï¿½ï¿½o
 		manager.merge(entity);  //atualizar no banco atravez do objeto.
-		manager.getTransaction().commit(); // fixar a transação.
+		manager.getTransaction().commit(); // fixar a transaï¿½ï¿½o.
 		manager.close(); //liberar o objeto da memoria
 	}
 	
 	
 	/**Metodo para deletar 	o objeto do banco
 	 * 
-	 * @param id - receberar o ID paara a conculta antes da deleção
+	 * @param id - receberar o ID paara a conculta antes da deleï¿½ï¿½o
 	 */
 	public void delete(Long id){
-		//recebe uma conexão 
+		//recebe uma conexï¿½o 
 		EntityManager manager = getEntityManager();
-		manager.getTransaction().begin();   //iniciando a transação
+		manager.getTransaction().begin();   //iniciando a transaï¿½ï¿½o
 		
-		//manager.remove(manager.find(aClass, id));  //Consulta pelo Id e depois a deleção.
-		//a Diferença do find é que ele busca todo o conteudo
+		//manager.remove(manager.find(aClass, id));  //Consulta pelo Id e depois a deleï¿½ï¿½o.
+		//a Diferenï¿½a do find ï¿½ que ele busca todo o conteudo
 		//e o getReference busca pela referencia do objeto pelo Id.
-		manager.remove(manager.getReference(aClass, id));// assim é mais rapido
+		manager.remove(manager.getReference(aClass, id));// assim ï¿½ mais rapido
 		
-		manager.getTransaction().commit(); // fixar a transação.
+		manager.getTransaction().commit(); // fixar a transaï¿½ï¿½o.
 		manager.close(); //liberar o objeto da memoria
 	}
 	

@@ -34,7 +34,6 @@ public class NovoCadastro extends HttpServlet {
 		
 		// salva o contato
 		try {
-			Connection connection = (Connection) request.getAttribute("connection");
 			
 			DaoCadastro dao = new DaoCadastro();
 			dao.save(contato);

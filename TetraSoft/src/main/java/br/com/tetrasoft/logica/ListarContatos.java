@@ -1,8 +1,8 @@
 package br.com.tetrasoft.logica;
 
-import java.sql.Connection;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,15 +19,31 @@ public class ListarContatos implements Logica {
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// recupera a cone��o com o banco atravez do atributo do doFilter
 		// connection.
-		Connection connection = (Connection) req.getAttribute("connection");
-
+//		Connection connection = (Connection) req.getAttribute("connection");
+		
+		String campoRecebido = req.getParameter("valor");
+		String paginaDeRetorno;
+		System.out.println(campoRecebido);
+		List<Cadastro> contatos;
 		// cria um Dao e uma lista
 		DaoCadastro dao = new DaoCadastro();
-		List<Cadastro> contatos = dao.findAll();
+		if(campoRecebido!=null){
+			contatos = dao.findByNomeOrEmail(campoRecebido);
+			paginaDeRetorno = "table-rows.jsp";
+		}
+		else{
+			contatos = dao.findAll();
+			paginaDeRetorno = "listar.jsp";
+		}
+		for (Cadastro cadastro : contatos) {
+			System.out.println(cadastro.getNome());
+		}
 		
 		//Repassa a lista por atributo
 		req.setAttribute("contatos", contatos);
 
-		return "listar.jsp";
+		System.out.println(paginaDeRetorno);
+		
+		return paginaDeRetorno;
 	}
 }

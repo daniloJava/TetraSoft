@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.tetrasoft.dao.DaoCadastro;
 import br.com.tetrasoft.entity.Cadastro;
 
-public class MostraTarefa implements Logica{
+public class UpdateContato implements Logica{
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -17,10 +17,10 @@ public class MostraTarefa implements Logica{
 		// passe a conexão no construtor
 		DaoCadastro dao = new DaoCadastro();
 
-		Cadastro cadastro= dao.findById(id); 
+		Cadastro cadastro = dao.findById(id); 
 
 		System.out.println("Alterando arquivo..");
-		req.setAttribute("oldContato", cadastro);
+		
 		
 
 		return "alteraCadastro.jsp";

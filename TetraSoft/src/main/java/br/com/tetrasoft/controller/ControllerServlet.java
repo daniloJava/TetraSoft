@@ -35,11 +35,19 @@ public class ControllerServlet extends HttpServlet {
 			// instancia o objeto correto atravez de uma interface
 			Logica logica = (Logica) classe.newInstance();
 			String pagina = logica.executa(request, response);
-
+			
 			request.getRequestDispatcher(pagina).forward(request, response);
 
 		} catch (Exception e) {
 			throw new ServletException("Problemas na logica de Negocio.", e);
 		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+		
+		
 	}
 }

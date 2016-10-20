@@ -21,6 +21,12 @@
 	rel="stylesheet" />
 <link type="text/css" href="resources/css/cadastroStyle.css"
 	rel="stylesheet" />
+<script type="text/javascript" src="resources/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/listar.js"></script>
+
+
 
 </head>
 
@@ -70,56 +76,47 @@
 						<div class="col-xs-12 col-md-8"> <!-- Abre Pesquisa -->
 						
 							<div class="form-group"> <!-- Abre campo de Pesquisa Nome-->
-								<label for="inputName" class="col-sm-4 control-label">
+								<label for="searchNome" class="col-sm-4 control-label">
 									Filtro por Nome:
 								</label>
 								<div class="col-sm-8">
-									<input type="text" name="nome" class="form-control"
-										id="inputName" placeholder="Digite um nome" >
+									<input type="search" name="nome" class="form-control"
+										id="searchNome" placeholder="Busca por Nome" >
 								</div>
 							</div> <!-- Fecha campo de Pesquisa Nome -->
 	
 							<div class="form-group"> <!-- Abre campo de Pesquisa Email-->
-								<label for="exampleInputEmail1" class="col-sm-4 control-label">Filtro
+								<label for="searchEmail" class="col-sm-4 control-label">Filtro
 									por E-mail:</label>
 								<div class="col-sm-8">
-									<input type="email" class="form-control" id="exampleInputEmail1"
-										name="email" placeholder="Email" required>
+									<input type="search" class="form-control" id="searchEmail"
+										name="email" placeholder="Busca por Email" >
 								</div>
 							</div> <!-- Fecha campo de Pesquisa Email-->
+							
 						</div> <!-- Fecha Pesquisa -->
+						
 					</div> <!-- Fecha a linha Pagina -->
-					
-					
-					<div class="row">  <!-- Abre uma linha para Resultado -->
+
+
+					<div class="row">
+						<!-- Abre uma linha para Resultado -->
 						<h4>Resultados</h4>
-							<hr>
-							<table class="table table-striped table-hover">
-								<tr>
-									<th>Nome</th>
-									<th>Email</th>
-									<th>Telefone</th>
-									<th>Ações</th>
-								</tr>
-								<c:forEach items="${contatos}" var="contato">
-									<tr>
-										<td><strong>${contato.nome}</strong></td>
-										<td>${contato.email}</td>
-										<td>${contato.telefone}</td>
-										<td><a href="tetra?logica=MostraTarefa?id=${contato.idCadastro}">
-												editar</a>
-											| <a href="tetra?logica=RemoverLogica&id=${contato.idCadastro}">
-												Remover</a></td>
-	
-									</tr>
-								</c:forEach>
-							</table>
-					</div><!-- Fecha a linha para Resultado -->
-					
+						<hr>
+						<table id="tableAjax" class="table table-striped table-hover"">
+							<jsp:include page="table-rows.jsp" />
+						</table>
+					</div>
+					<!-- Fecha a linha para Resultado -->
+
 				</div> <!-- Fecha Pagina -->
 			</div> <!-- Fecha Conteudo Resultado -->
 		</div> <!-- Fecha linha Resultado -->
 	</div> <!-- Fecha todo Conteudo -->
+
+
+
+								
 
 
 </body>
