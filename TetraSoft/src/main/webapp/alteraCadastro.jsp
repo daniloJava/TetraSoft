@@ -1,35 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
- 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
 
-<script>
-$(document).ready(function(){
-    $(".aplicaModal").click(function(){
-    	
-    	
-        $("#myModal").modal();
-    });
-});
-</script>	
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="widht=device-widht">
+<title>Cadastro</title>
 
-<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
+<link rel="shortcut icon" href="http://www.tetrasoft.com.br/wp-content/uploads/2013/11/favicon3.png">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header" style="padding: 35px 50px;">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4>
-						<span class="glyphicon glyphicon-lock"></span> Alterar contato -
-					</h4>
+<link type="text/css" href="resources/css/bootstrap/bootstrap.css"
+	rel="stylesheet" />
+<link type="text/css" href="resources/css/bootstrap/bootstrap-theme.css"
+	rel="stylesheet" />
+<link type="text/css" href="resources/css/bootstrap/bootstrap.css"
+	rel="stylesheet" />
+<link type="text/css" href="resources/css/cadastroStyle.css"
+	rel="stylesheet" />
+
+</head>
+<body>
+	
+	<div class="conteudo"> <!-- Abre todo Conteudo -->
+		<!-- Abre Cabeçalho -->
+		<header id="header">
+			<div class="row">
+				<div class="container">
+					<div class="col-xs-6 col-md-4">
+					
+						<a class="logo" href="http://www.tetrasoft.com.br">  <!-- Abre Link do Logo -->
+							<img id="id_logo" class="logo-img"
+									src="http://www.tetrasoft.com.br/wp-content/uploads/2013/11/Tetra-Soft-2.png" alt="Tetra">
+						</a> <!-- Fecha Link do Logo -->
+						
+					</div>
+					<div class="col-xs-12 col-md-8">
+						<h2>Sistema Demonstração</h2>
+					</div>
 				</div>
-				<div class="modal-body" style="padding: 40px 50px;">
+			</div>
+		</header> <!-- Fecha Cabeçalho -->
+		
+		<hr>
+		
+		<div class="row">  <!-- Abre linha Cadastro -->
+			<div class="container">  <!-- Abre Conteudo Cadastro -->
+			
+				<div class=" col-xs-6 col-md-2" id="menuCadastro"> <!-- Abre MENU -->
+					<h4>Menu</h4>
+					<h4>
+						<a href="/TetraSoft/">CADASTRO</a>
+					</h4>
+					<h4>
+						<a href="tetra?logica=ListarContatos">PESQUISA</a>
+					</h4>
+				</div> <!-- Fecha MENU -->
+				
+				<div class=" col-xs-12 col-md-8" id="pagina"> <!-- Abre Pagina -->
+
+					<div class="row">
+						<h4>Cadastro De Clientes</h4>
 					<form action="updateContato" method="POST"
 						class="form-horizontal">
 						<!-- Abre formulário -->
@@ -37,6 +68,7 @@ $(document).ready(function(){
 						<div class="form-group">
 							<label for="inputName" class="col-sm-2 control-label">Nome:</label>
 							<div class="col-sm-10">
+								<input type="hidden" name="id" value="${oldContato.idCadastro}">
 								<input type="text" name="nome" class="form-control"
 									id="inputName" value="${oldContato.nome }" required>
 							</div>
@@ -90,18 +122,14 @@ $(document).ready(function(){
 
 					</form>
 
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-danger btn-default pull-left"
-						data-dismiss="modal">
-						<span class="glyphicon glyphicon-remove"></span> Cancel
-					</button>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
+					</div>
+				</div> <!-- Fecha Pagina -->
+				
+			</div>  <!-- Fecha Conteudo Cadastro -->
+			
+		</div>  <!-- Fecha linha Cadastro -->
+		
+	</div>  <!-- Fecha todo Conteudo -->
 
 </body>
 </html>

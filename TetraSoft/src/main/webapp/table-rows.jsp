@@ -45,7 +45,7 @@ function atualizar(idContato) {
 			<td>${contato.email}</td>
 			<td>${contato.telefone}</td>
 			<td>
-			<a href="#"  id="editar" value="${contato.idCadastro}">
+			<a href="tetra?logica=MostraUpdateContato&id=${contato.idCadastro}"  id="editar" >
   				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> editar
 			</a> 
 			| <a
