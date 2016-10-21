@@ -77,11 +77,13 @@
 							</div>
 							
 							<!--Campo do Email -->
-							<div class="form-group">
+							<div class="form-group has-feedback">
 								<label for="exampleInputEmail1" class="col-sm-2 control-label">E-mail:</label>
 								<div class="col-sm-10">
 									<input type="email" class="form-control" id="inputEmail" 
-	  									name="email" placeholder="Email" required>
+	  									name="email" placeholder="Email" required >
+	  									<div id="valida" class="alert alert-danger" role="alert"></div>
+	  									
 								</div>
 							</div>
 	
@@ -145,12 +147,11 @@
 				$('#inputEmail').load(url, function(response, status, xhr) {
 					
 				if (status == "success") {
-					alert("validado");
-					var input = document.querySelector("#inputEmail");
-					input.setAttribute("aria-describedby", "inputSuccess4Status");
+					
 					
 				} else{
-					alert("já existe");
+					$("#valida").html("E-mail já existente - Insira um novo");
+					$("#valida").show();
 				}
 				
 				

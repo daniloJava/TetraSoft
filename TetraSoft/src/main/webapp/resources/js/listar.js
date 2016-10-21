@@ -37,7 +37,7 @@ function search(value){
 		url = "/TetraSoft/tetra?logica=ListarContatos&valor=" + value ;
 	}else{
 		url = "TetraSoft/tetra?logica=ListarContatos";
-		alert("Foii")
+		
 	}
 	
 	
