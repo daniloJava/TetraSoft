@@ -15,24 +15,15 @@ $(document).ready(function () {
 	$('#searchNome').keyup(function (){
 		var value = $(this).val();
 		
-		var exp = new RegExp('^[a-zA-Z0-9]');
+		search(value.concat("__nome"));
 		
-		
-		if (exp.test(value)){
-			search(value.concat("__nome"));
-		}else{
-			tbody(1);
-		}
 	});
 	
 	$('#searchEmail').keyup(function (){
 		var value = $(this).val();
 		
-		var exp = new RegExp('^[a-zA-Z0-9]');
+		search(value.concat("__email"));
 		
-		if (exp.test(value)){
-			search(value.concat("__email"));
-		}	
 	});
 	
 });
@@ -40,11 +31,12 @@ $(document).ready(function () {
 function search(value){
 	
 	var url;
-	if(value.length > 0){
+	if(value != ""){
 		//se tiver algo preenchido ele leva pra outra Url, passando o valor do titulo e o numero d apagina
 		url = "/TetraSoft/tetra?logica=ListarContatos&valor=" + value ;
 	}else{
-		url = "/TetraSoft/tetra?logica=ListarContatos";
+		url = "TetraSoft/tetra?logica=ListarContatos";
+		alert("Foii")
 	}
 	
 	
@@ -55,5 +47,6 @@ function search(value){
 		}
 		
 	});
+	
 }
 

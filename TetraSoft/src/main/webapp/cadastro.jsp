@@ -110,11 +110,11 @@
 							
 							
 							<div class="form-group">
-								<label for="Sexo" class="col-sm-2 control-label">
+								<label for="newsletter" class="col-sm-2 control-label">
 									Newsletter: 
 								</label> 
 								<label class="checkbox-inline"> 
-									<input type="checkbox"> sim
+									<input type="checkbox" id="newsletter" value="s" name="newsletter"> sim
 								</label>
 							</div>
 

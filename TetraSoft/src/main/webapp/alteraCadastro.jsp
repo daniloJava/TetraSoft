@@ -107,14 +107,16 @@
 								class="radio-inline"> <input type="radio" name="sexo"
 								id="masculino" value="MASCULINO"> maculino
 							</label> <label class="radio-inline"> <input type="radio"
-								name="sexo" id="feminino" value="FEMININO"> feminino
+								name="sexo" id="feminino" value="FEMININO" required="required"> feminino
 							</label>
 						</div>
 
 						<div class="form-group">
-							<label for="Sexo" class="col-sm-2 control-label">
-								Newsletter: </label> <label class="checkbox-inline"> <input
-								type="checkbox"> sim
+							<label for="newsletter" class="col-sm-2 control-label">
+								Newsletter: </label> 
+							<label class="checkbox-inline"> 
+								<input type="checkbox" id="newsletter" 
+									 name="newsletter"> sim
 							</label>
 						</div>
 

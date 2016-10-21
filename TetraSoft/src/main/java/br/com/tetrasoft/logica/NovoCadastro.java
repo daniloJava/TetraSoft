@@ -19,8 +19,8 @@ import br.com.tetrasoft.entity.Cadastro.Sexo;
 /**De uma forma diferente,
  * essa classe e a proria Servlet
  * 
- * Atravez da Anotação @WebServlet eu chamo o seu conteudo na pagina,
- * e automaticamente o metodo service é executado 
+ * Atravez da Anotaï¿½ï¿½o @WebServlet eu chamo o seu conteudo na pagina,
+ * e automaticamente o metodo service ï¿½ executado 
  * 
  * 
  * @author Danilo Silva
@@ -42,6 +42,7 @@ public class NovoCadastro extends HttpServlet {
 		contato.setEmail(request.getParameter("email"));
 		contato.setTelefone(request.getParameter("telefone"));
 		contato.setSexo(request.getParameter("sexo").equals("MASCULINO")? Sexo.MASCULINO : Sexo.FEMININO);
+		contato.setNewsletter(request.getParameter("newsletter"));
 		
 		// salva o contato
 		try {

@@ -45,6 +45,9 @@ public class Cadastro implements Serializable{
 	@Column(name = "SEXO_CADASTRO", nullable = false)
 	private Sexo sexo;
 
+	@Column(name = "NEWSLETTER")
+	private String newsletter;
+	
 	public Long getIdCadastro() {
 		return idCadastro;
 	}
@@ -92,5 +95,15 @@ public class Cadastro implements Serializable{
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
+
+	public String getNewsletter() {
+		return newsletter;
+	}
+
+	public void setNewsletter(String newsletter) {
+		this.newsletter = newsletter;
+	}
+	
+	
 
 }
