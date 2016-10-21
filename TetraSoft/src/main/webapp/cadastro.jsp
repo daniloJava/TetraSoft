@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="widht=device-widht">
+<meta name="viewport" content="width=device-width">
 <title>Cadastro</title>
 
 <link rel="shortcut icon" href="http://www.tetrasoft.com.br/wp-content/uploads/2013/11/favicon3.png">
@@ -18,6 +18,11 @@
 	rel="stylesheet" />
 <link type="text/css" href="resources/css/cadastroStyle.css"
 	rel="stylesheet" />
+	
+<script type="text/javascript" src="resources/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
 
 </head>
 <body>
@@ -75,7 +80,8 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1" class="col-sm-2 control-label">E-mail:</label>
 								<div class="col-sm-10">
-									<input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" required>
+									<input type="email" class="form-control" id="inputEmail" 
+	  									name="email" placeholder="Email" required>
 								</div>
 							</div>
 	
@@ -130,6 +136,21 @@
 		</div>  <!-- Fecha linha Cadastro -->
 		
 	</div>  <!-- Fecha todo Conteudo -->
-
+	<script type="text/javascript">
+		document.querySelector("#inputEmail").addEventListener('blur',
+				function() {
+				
+				var url = "/TetraSoft/tetra?logica=VerificaEmail&email=" + this.value ;
+			
+				$('#inputEmail').load(url, function(response, status, xhr) {
+				if (response ) {
+					alert("passou");
+				} 
+				
+				
+			});
+			
+				}, false);
+	</script>
 </body>
 </html>
