@@ -140,12 +140,18 @@
 		document.querySelector("#inputEmail").addEventListener('blur',
 				function() {
 				
-				var url = "/TetraSoft/tetra?logica=VerificaEmail&email=" + this.value ;
+				var url = "/TetraSoft/validaEmail?email=" + this.value ;
 			
 				$('#inputEmail').load(url, function(response, status, xhr) {
-				if (response ) {
-					alert("passou");
-				} 
+					
+				if (status == "success") {
+					alert("validado");
+					var input = document.querySelector("#inputEmail");
+					input.setAttribute("aria-describedby", "inputSuccess4Status");
+					
+				} else{
+					alert("já existe");
+				}
 				
 				
 			});
