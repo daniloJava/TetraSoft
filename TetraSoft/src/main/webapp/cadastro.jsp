@@ -126,7 +126,7 @@
 								</label>
 							</div>
 
-							<button type="submit" class="btn btn-primary btn-lg">salvar</button>
+							<button type="submit" class="btn btn-primary btn-lg disabled" id="salvar">salvar</button>
 							
 						</form> <!-- Fecha formulário -->
 
@@ -147,10 +147,12 @@
 				$('#inputEmail').load(url, function(response, status, xhr) {
 					
 				if (status == "success") {
-					
+					$("#valida").empty().removeAttr('class');
+					$("#salvar").css({"disabled":"none"});
 					
 				} else{
-					$("#valida").html("E-mail já existente - Insira um novo");
+					$("#valida").html("E-mail já existente - Insira um novo").attr('class', 'alert alert-danger');
+					$("#salvar").css({"disabled":"disabled"});
 					$("#valida").show();
 				}
 				
